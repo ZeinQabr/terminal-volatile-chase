@@ -113,11 +113,7 @@ def healing():
         if healopportunity > 0:
                 hp += heal
                 healopportunity -= 1
-                if hp > 100:
-                    hp = 100
-                    print('HP is full')
-                else:
-                    print(f"Healed, Current HP: {hp}")
+                print(f"Healed, Current HP: {hp}")
         else:
             print('No heal opportunity available (need 3 succesful dodges)')
     else:
@@ -149,8 +145,11 @@ while chaseattempt <= 10:
             truemove += 1
             chaseattempt += 1
             print("you dodged the attack")
-            healop()
-            healing()
+            if healopportunity >= 1 and hp < 100:
+                healop()
+                healing()
+            else:
+                healop()
         else:
             chaseattempt += 1
             print("Wrong word mate, you got hit")
